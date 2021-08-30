@@ -9,7 +9,7 @@ const handler = async (req, res) => {
         const minted = await isMinted(tokenId)
         if (!minted) return res.status(400).json({ error: 'This token has not been minted.' })
 
-        const url = `https://ipfs.io/ipfs/QmSu8enMgD5bVq3JjCUct9z7LgFpyrLx8LZa95BnXM2JzC${tokenId}.png`
+        const url = `https://ipfs.io/ipfs/QmSu8enMgD5bVq3JjCUct9z7LgFpyrLx8LZa95BnXM2JzC${tokenId}`
         const { data } = await axios.get(url)
         data.image = `${fullUrl}/api/image?id=${tokenId}`
         res.json(data)
