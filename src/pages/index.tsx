@@ -7,7 +7,7 @@ import Web3 from 'web3'
 import abi from '../data/abi.json'
 import TokenViewer from '../components/TokenViewer'
 
-const date1 = dayjs('2021-08-07T19:00:00-04:00')
+const date1 = dayjs('2021-08-29T19:00:00-04:00')
 const date2 = dayjs(Date.now())
 
 const initialTime = date1.diff(date2)
@@ -25,14 +25,14 @@ export default function IndexPage() {
     const web3 = new Web3(wallet.ethereum)
     const contract = new web3.eth.Contract(abi as any, `${process.env.NEXT_PUBLIC_CONTRACT_ADDRESS}`)
 
-    const mint = async (amount = 0) => {
+    const buyRocks = async (amount = 0) => {
         setStatus('loading')
         try {
             if (!wallet.account) return wallet.connect()
 
-            await contract.methods.buy(amount).estimateGas({ from: wallet.account, value: web3.utils.toWei((10 * amount).toString()) })
+            await contract.methods.buyRocks(amount).estimateGas({ from: wallet.account, value: web3.utils.toWei((10 * amount).toString()) })
 
-            await contract.methods.buy(amount).send({ from: wallet.account, value: web3.utils.toWei((10 * amount).toString()) })
+            await contract.methods.buyRocks(amount).send({ from: wallet.account, value: web3.utils.toWei((10 * amount).toString()) })
             setStatus('complete')
             // 12
         } catch (error) {
@@ -76,20 +76,20 @@ export default function IndexPage() {
                     <p className="text-xs text-right opacity-50">{wallet.account ? `Connected as ${wallet.account.slice(0, 6)}...${wallet.account.slice(-6)}.` : 'Wallet not connected.'}</p>
 
                     {!wallet.account && (
-                        <button onClick={mint} type="button" className="bg-white text-black rounded w-full p-4 text-xl">
+                        <button onClick={buyRocks} type="button" className="bg-white text-black rounded w-full p-4 text-xl">
                             Connect Wallet
                         </button>
                     )}
 
                     {wallet.account && (
                         <div className="grid grid-cols-3 gap-2">
-                            <button onClick={() => mint(1)} type="button" className="bg-white text-black rounded w-full p-4">
+                            <button onClick={() => buyRocks(1)} type="button" className="bg-white text-black rounded w-full p-4">
                                 Mint x1
                             </button>
-                            <button onClick={() => mint(2)} type="button" className="bg-white text-black rounded w-full p-4">
+                            <button onClick={() => buyRocks(2)} type="button" className="bg-white text-black rounded w-full p-4">
                                 Mint x2
                             </button>
-                            <button onClick={() => mint(3)} type="button" className="bg-white text-black rounded w-full p-4">
+                            <button onClick={() => buyRocks(3)} type="button" className="bg-white text-black rounded w-full p-4">
                                 Mint x3
                             </button>
                         </div>
