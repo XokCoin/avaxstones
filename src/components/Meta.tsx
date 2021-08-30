@@ -3,7 +3,7 @@ import Head from 'next/head'
 const Meta = () => {
     const title = 'Avax Stones'
     const description = 'Avax Stones. The official NFT. 100 available at 10 AVAX.'
-    const url = 'https://avax.chain.stones'
+    const url = 'https://avax.stones.art'
 
     return (
         <Head>

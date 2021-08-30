@@ -7,7 +7,7 @@ export default function TokenViewer() {
     const [text, setText] = useState()
     const [value] = useDebounce(text, 1000)
 
-    const { data } = useSWR(value ? `https://fuckmikeether.casperdefi.com/api/metadata?id=${value}` : null)
+    const { data } = useSWR(value ? `${value}` : null)
 
     return (
         <div className="space-y-2">
