@@ -7,7 +7,7 @@ export default function TokenViewer() {
     const [text, setText] = useState()
     const [value] = useDebounce(text, 1000)
 
-    const { data } = useSWR(value ? `${value}` : null)
+    const { data } = useSWR(value ? `https://avax.stones.art/api/metadata?id=${value}` : null)
 
     return (
         <div className="space-y-2">
@@ -33,3 +33,4 @@ export default function TokenViewer() {
         </div>
     )
 }
+

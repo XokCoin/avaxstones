@@ -30,9 +30,9 @@ export default function IndexPage() {
         try {
             if (!wallet.account) return wallet.connect()
 
-            await contract.methods.buy(amount).estimateGas({ from: wallet.account, value: web3.utils.toWei((69.69 * amount).toString()) })
+            await contract.methods.buy(amount).estimateGas({ from: wallet.account, value: web3.utils.toWei((10 * amount).toString()) })
 
-            await contract.methods.buy(amount).send({ from: wallet.account, value: web3.utils.toWei((69.69 * amount).toString()) })
+            await contract.methods.buy(amount).send({ from: wallet.account, value: web3.utils.toWei((10 * amount).toString()) })
             setStatus('complete')
             // 12
         } catch (error) {
