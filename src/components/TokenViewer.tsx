@@ -7,7 +7,7 @@ export default function TokenViewer() {
     const [text, setText] = useState()
     const [value] = useDebounce(text, 1000)
 
-    const { data } = useSWR(value ? `https://avax.stones.art/api/metadata?id=${value}` : null)
+    const { data } = useSWR(value ? `https://gateway.pinata.cloud/ipfs/QmUMEaAaZf15sAbXfjWjPvzDN962VzFmPiTU7tSwnvtWMA/${value}.json` : null)
 
     return (
         <div className="space-y-2">
