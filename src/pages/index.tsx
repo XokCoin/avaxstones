@@ -102,7 +102,7 @@ export default function IndexPage() {
                 <TokenViewer />
 
                 <div>
-                    <img className="rounded max-w-2xl w-full" src="/img/fuck-mike-eth.jpg" alt="" />
+                    <img className="rounded max-w-2xl w-full" src="/img/stone.jpg" alt="" />
                 </div>
 
                 <div className="grid grid-cols-3 gap-8">
